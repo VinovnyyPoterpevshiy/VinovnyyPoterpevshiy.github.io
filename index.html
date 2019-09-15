@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
 
   
-  <title>Hexo</title>
+  <title>вырождение эпохи</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="вырождение эпохи">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en">
+<meta property="og:site_name" content="вырождение эпохи">
+<meta property="og:locale" content="zn">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="вырождение эпохи">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="вырождение эпохи" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -23,18 +23,18 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 </html>
 <body>
-  <div id="container">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">вырождение эпохи</a>
       </h1>
       
     </div>
@@ -87,17 +87,16 @@
         <p>简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转</p>
 <p><del>都翻译成这样了，明显</del><strong>这题需要计算几何</strong></p>
 <p><img src="https://i.loli.net/2018/11/25/5bfa412598c34.png" alt="tmp.png"></p>
-<p>如图，死角的面积是$S_{\Delta ABC}-S_1$ (注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，<strong>为了让死角面积最小，就是让$\Delta ABC$ AB边上的高最小</strong>。因为直角三角形的斜边的中线等于斜边的一半，所以点O在以AB为直径的圆上，所以<strong>当三角形的边与多边形的边重合时高最小</strong>。</p>
+<p>如图，死角的面积是$S_{\Delta ABC}-S_1$(注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，<strong>为了让死角面积最小，就是让$\Delta ABC$AB边上的高最小</strong>。因为直角三角形的斜边的中线等于斜边的一半，所以点O在以AB为直径的圆上，所以<strong>当三角形的边与多边形的边重合时高最小</strong>。</p>
 <p>于是我们只需要枚举该多边形的n条边，讨论其靠左墙或靠下墙，然后通过作垂直于该边的线求出贴在另一墙上离点O最近的点，然后计算出此时面积，取最小值。维护内部多边形的面积时可将其分割成若干三角形，然后用叉积维护。</p>
 <p>最后，注意精度控制</p>
 <p>代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">long long sqr(long long x) __attribute__((always_inline));</span><br><span class="line"></span><br><span class="line">long long sqr(long long x) &#123;</span><br><span class="line">	return x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct Point &#123;</span><br><span class="line">	Point(int x = 0, int y = 0) : x(x), y(y) &#123;&#125;</span><br><span class="line">	inline Point &amp;operator -=(const Point &amp;o) &#123;</span><br><span class="line">		x -= o.x;</span><br><span class="line">		y -= o.y;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;</span><br><span class="line">	double dis() const __attribute__((always_inline));</span><br><span class="line">	int x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">double Point::dis() const &#123;</span><br><span class="line">	return sqrt(sqr(x) + sqr(y));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline Point operator - (Point a, const Point &amp;b) &#123;</span><br><span class="line">	return a -= b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">long long det(const Point &amp;a, const Point &amp;b) __attribute__((always_inline));</span><br><span class="line">long long dot(const Point &amp;a, const Point &amp;b) __attribute__((always_inline));</span><br><span class="line">long long get_sum(int i,int j) __attribute__((always_inline));</span><br><span class="line">int nxt(int i) __attribute__((always_inline));</span><br><span class="line">double solve() __attribute__((always_inline));</span><br><span class="line"></span><br><span class="line">long long det(const Point &amp;a, const Point &amp;b) &#123;</span><br><span class="line">	return (long long)a.x * b.y - (long long)a.y * b.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">long long dot(const Point &amp;a, const Point &amp;b) &#123;</span><br><span class="line">	return (long long)a.x * b.x + (long long)a.y * b.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const int N = 40000;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">Point p[N];</span><br><span class="line">long long sum[N + 1];</span><br><span class="line"></span><br><span class="line">long long get_sum(int i, int j) &#123;</span><br><span class="line">	long long s = sum[j] - sum[i];</span><br><span class="line">	return i &lt;= j ? s : sum[n] + s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int nxt(int i) &#123;</span><br><span class="line">	return (i + 1) % n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">double solve() &#123;</span><br><span class="line">	sum[0] = 0;</span><br><span class="line">	for (int i = 0; i &lt; n; ++ i) sum[i + 1] = sum[i] + det(p[i], p[(i + 1) % n]);</span><br><span class="line">	double result = INFINITY;</span><br><span class="line">	for (int i = 0, j = 0; i &lt; n; ++ i) &#123;</span><br><span class="line">		while (dot(p[nxt(i)] - p[i], p[nxt(j)] - p[j]) &gt; 0) j = nxt(j);</span><br><span class="line">		Point a = p[nxt(i)] - p[i];</span><br><span class="line">		Point b = p[j] - p[i];</span><br><span class="line">		double n = a.dis();</span><br><span class="line">		result = min(result, det(a, b) / n * dot(a, b) / n - (get_sum(i, j) + det(p[j], p[i])));</span><br><span class="line">		if (i == j) return 0.;</span><br><span class="line">	&#125;</span><br><span class="line">	return .5 * result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	for (int i = 0; i &lt; n; ++ i) scanf(&quot;%d%d&quot;, &amp;p[i].x, &amp;p[i].y);</span><br><span class="line">	solve();</span><br><span class="line">	if (sum[n] &lt; 0) reverse(p, p + n);</span><br><span class="line">	double result = solve();</span><br><span class="line">	for (int i = 0; i &lt; n; ++ i) p[i].x *= -1;</span><br><span class="line">	reverse(p, p + n);</span><br><span class="line">	result = min(result, solve());</span><br><span class="line">	printf(&quot;%.10f\n&quot;, result);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/15/C-F54E-acuum-Сleaner/" data-id="ck0kmwcfk0001n8uurhxahymo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/15/C-F54E-acuum-Сleaner/" data-id="ck0kpyh3q0000ckuu7p4qft68" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
@@ -133,22 +132,18 @@
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/15/hello-world/" data-id="ck0kmwcfa0000n8uuof3zhrmo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/15/hello-world/" data-id="ck0kpyh3x0001ckuuxiuwvseq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +217,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2019 VinovnyyPoterpevshiy<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -248,6 +243,23 @@
 
 
 
-  </div>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
