@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+
+  
+  <title>SPOJ2666-QTREE4 | вырождение эпохи</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这题是可以点分治或LCT作的。。但这里讲边分治的做法。。 和点分治类似，边分治利用一条树上路径要吗经过一条边，要么不经过。而不经过的路径必然会在一次分治中变为经过的。 我们找到一条中心边，边左边和边右边分别建一个大根堆。左边的堆中存储边的左子树中白点的深度，右边的堆储存右边的。 当发生颜色反转时，若为黑点转白点，则去掉标记，并将点压入相应的堆中。若为白点转为黑点，则将其打上标记。 统计时，先不断弹">
+<meta name="keywords" content="边分治">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPOJ2666-QTREE4">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/SPOJ2666-QTREE4/index.html">
+<meta property="og:site_name" content="вырождение эпохи">
+<meta property="og:description" content="这题是可以点分治或LCT作的。。但这里讲边分治的做法。。 和点分治类似，边分治利用一条树上路径要吗经过一条边，要么不经过。而不经过的路径必然会在一次分治中变为经过的。 我们找到一条中心边，边左边和边右边分别建一个大根堆。左边的堆中存储边的左子树中白点的深度，右边的堆储存右边的。 当发生颜色反转时，若为黑点转白点，则去掉标记，并将点压入相应的堆中。若为白点转为黑点，则将其打上标记。 统计时，先不断弹">
+<meta property="og:locale" content="zn">
+<meta property="og:updated_time" content="2019-09-22T07:13:27.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPOJ2666-QTREE4">
+<meta name="twitter:description" content="这题是可以点分治或LCT作的。。但这里讲边分治的做法。。 和点分治类似，边分治利用一条树上路径要吗经过一条边，要么不经过。而不经过的路径必然会在一次分治中变为经过的。 我们找到一条中心边，边左边和边右边分别建一个大根堆。左边的堆中存储边的左子树中白点的深度，右边的堆储存右边的。 当发生颜色反转时，若为黑点转白点，则去掉标记，并将点压入相应的堆中。若为白点转为黑点，则将其打上标记。 统计时，先不断弹">
+  
+    <link rel="alternate" href="/atom.xml" title="вырождение эпохи" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">вырождение эпохи</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SPOJ2666-QTREE4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/SPOJ2666-QTREE4/" class="article-date">
+  <time datetime="2019-09-22T07:00:51.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SPOJ2666-QTREE4
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这题是可以点分治或LCT作的。。但这里讲边分治的做法。。</p>
+<p>和点分治类似，边分治利用一条树上路径要吗经过一条边，要么不经过。而不经过的路径必然会在一次分治中变为经过的。</p>
+<p>我们找到一条中心边，边左边和边右边分别建一个大根堆。左边的堆中存储边的左子树中白点的深度，右边的堆储存右边的。</p>
+<p>当发生颜色反转时，若为黑点转白点，则去掉标记，并将点压入相应的堆中。若为白点转为黑点，则将其打上标记。</p>
+<p>统计时，先不断弹左右堆顶，直到堆顶没有标记或堆空。然后用左堆顶值、右堆顶值和(左堆顶值+右堆顶值+中心边长度)三者的最大值更新答案。</p>
+<p>为方便边分治，我们使每个点的度数不大于$3$，即转为一棵二叉树。</p>
+<a id="more"></a>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2e5</span> + <span class="number">5</span>, MAXE = <span class="number">4e6</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> v, w, nxt, pre;</span><br><span class="line">&#125; edge[MAXE], _edge[MAXE];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head[MAXN], _head[MAXN], tot, _tot, tail[MAXN], mark[MAXN], size[MAXN], n,</span><br><span class="line">    _n, cnt, rt, midedge, maxv;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> _add(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w) &#123;</span><br><span class="line">  _edge[_tot].v = v, _edge[_tot].w = w, _edge[_tot].nxt = _head[u],</span><br><span class="line">  _head[u] = _tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">  edge[tot].v = v, edge[tot].w = w, edge[tot].nxt = head[u], head[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (head[u] == i)</span><br><span class="line">    head[u] = edge[i].nxt;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    edge[edge[i].pre].nxt = edge[i].nxt;</span><br><span class="line">  <span class="keyword">if</span> (tail[u] == i)</span><br><span class="line">    tail[u] = edge[i].pre;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    edge[edge[i].nxt].pre = edge[i].pre;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> father = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = _head[u]; ~i; i = _edge[i].nxt) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = _edge[i].v, w = _edge[i].w;</span><br><span class="line">    <span class="keyword">if</span> (v == fa)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">if</span> (father == <span class="number">0</span>)</span><br><span class="line">      add(u, v, w), add(v, u, w), father = u, build(v, u);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      mark[++n] = <span class="number">0</span>, add(n, father, <span class="number">0</span>), add(father, n, <span class="number">0</span>), father = n,</span><br><span class="line">      add(v, father, w), add(father, v, w), build(v, u);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">get_pre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(tail, <span class="number">-1</span>, <span class="keyword">sizeof</span>(tail));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = head[i]; ~j; j = edge[j].nxt)</span><br><span class="line">      edge[j].pre = tail[i], tail[i] = j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> u, dis;</span><br><span class="line">  point() &#123;&#125;</span><br><span class="line">  point(<span class="keyword">int</span> _u, <span class="keyword">int</span> _dis) &#123;</span><br><span class="line">    u = _u;</span><br><span class="line">    dis = _dis;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> point &amp;_A) <span class="keyword">const</span> &#123; <span class="keyword">return</span> dis &lt; _A.dis; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tree</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> rt, midlen, ans, ls, rs;</span><br><span class="line">  priority_queue&lt;point&gt; q;</span><br><span class="line">&#125; t[<span class="number">2</span> * MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs_size</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, <span class="keyword">int</span> dir)</span> </span>&#123;</span><br><span class="line">  _add(u, rt, dir);</span><br><span class="line">  <span class="keyword">if</span> (mark[u])</span><br><span class="line">    t[rt].q.push(point(u, dir));</span><br><span class="line">  size[u] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; ~i; i = edge[i].nxt) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = edge[i].v, w = edge[i].w;</span><br><span class="line">    <span class="keyword">if</span> (v == fa)</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    dfs_size(v, u, dir + w), size[u] += size[v];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs_midedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (max(size[u], size[t[rt].rt] - size[u]) &lt; maxv)</span><br><span class="line">    maxv = max(size[u], size[t[rt].rt] - size[u]), midedge = fa;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; ~i; i = edge[i].nxt) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = edge[i].v;</span><br><span class="line">    <span class="keyword">if</span> (i != (fa ^ <span class="number">1</span>))</span><br><span class="line">      dfs_midedge(v, i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> rt)</span> </span>&#123;</span><br><span class="line">  t[rt].ans = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; !t[rt].q.empty() &amp;&amp; mark[t[rt].q.top().u] == <span class="number">0</span>;)</span><br><span class="line">    t[rt].q.pop();</span><br><span class="line">  <span class="keyword">int</span> ls = t[rt].ls, rs = t[rt].rs;</span><br><span class="line">  <span class="keyword">if</span> (ls == <span class="number">0</span> &amp;&amp; rs == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (mark[t[rt].rt])</span><br><span class="line">      t[rt].ans = <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (t[ls].ans &gt; t[rt].ans)</span><br><span class="line">      t[rt].ans = t[ls].ans;</span><br><span class="line">    <span class="keyword">if</span> (t[rs].ans &gt; t[rt].ans)</span><br><span class="line">      t[rt].ans = t[rs].ans;</span><br><span class="line">    <span class="keyword">if</span> (!t[ls].q.empty() &amp;&amp; !t[rs].q.empty())</span><br><span class="line">      t[rt].ans =</span><br><span class="line">          max(t[rt].ans, t[ls].q.top().dis + t[rs].q.top().dis + t[rt].midlen);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">  rt = id, maxv = n, midedge = <span class="number">-1</span>, t[id].rt = u;</span><br><span class="line">  dfs_size(u, <span class="number">0</span>, <span class="number">0</span>), dfs_midedge(u, <span class="number">-1</span>);</span><br><span class="line">  <span class="keyword">if</span> (~midedge) &#123;</span><br><span class="line">    <span class="keyword">int</span> p1 = edge[midedge].v, p2 = edge[midedge ^ <span class="number">1</span>].v;</span><br><span class="line">    t[id].midlen = edge[midedge].w, t[id].ls = ++cnt, t[id].rs = ++cnt,</span><br><span class="line">    del(p1, midedge ^ <span class="number">1</span>), del(p2, midedge), dfs(t[id].ls, p1),</span><br><span class="line">    dfs(t[id].rs, p2);</span><br><span class="line">  &#125;</span><br><span class="line">  pushup(id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">  mark[u] ^= <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = _head[u]; ~i; i = _edge[i].nxt) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = _edge[i].v, w = _edge[i].w;</span><br><span class="line">    <span class="keyword">if</span> (mark[u] == <span class="number">1</span>)</span><br><span class="line">      t[v].q.push(point(u, w));</span><br><span class="line">    pushup(v);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(_head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(_head)), <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;_n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, u, v, w; i &lt; _n; i++)</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w), _add(u, v, w), _add(v, u, w);</span><br><span class="line">  <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(head)), n = _n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    mark[i] = <span class="number">1</span>;</span><br><span class="line">  build(<span class="number">1</span>, <span class="number">0</span>), get_pre(), <span class="built_in">memset</span>(_head, <span class="number">-1</span>, <span class="keyword">sizeof</span>(_head)), _tot = <span class="number">0</span>,</span><br><span class="line">                                                            dfs(cnt = <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">char</span> op[<span class="number">2</span>];</span><br><span class="line">  <span class="keyword">int</span> m, x;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">  <span class="keyword">for</span> (; m; --m) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, op);</span><br><span class="line">    <span class="keyword">if</span> (op[<span class="number">0</span>] == <span class="string">'A'</span>)</span><br><span class="line">      <span class="keyword">if</span> (t[<span class="number">1</span>].ans == <span class="number">-1</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"They have disappeared.\n"</span>);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, t[<span class="number">1</span>].ans);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x), update(x);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/SPOJ2666-QTREE4/" data-id="ck0umvugp000pp0uuk949sn9v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/22/SPOJ1825-FTOUR2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SPOJ1825-FTOUR2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/点分治/" style="font-size: 15px;">点分治</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/计算几何/" style="font-size: 20px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/边分治/" style="font-size: 10px;">边分治</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/22/SPOJ2666-QTREE4/">SPOJ2666-QTREE4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/SPOJ1825-FTOUR2/">SPOJ1825-FTOUR2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/POJ1741-Tree/">POJ1741-Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/">COCI2014/2015#3-KAMIONI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/">GXOI/GZOI2019-lvxingzhe</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 VinovnyyPoterpevshiy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

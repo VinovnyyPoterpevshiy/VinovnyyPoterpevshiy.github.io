@@ -7,19 +7,19 @@
   
   <title>CF54E-Vacuum-Cleaner | вырождение эпохи</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转 都翻译成这样了，明显这题需要计算几何  如图，死角的面积是$S_{\Delta ABC}-S_1$(注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，为了让死角面积最小，就是让$\Delta ABC$AB边上的高最小。因">
+  <meta name="description" content="简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转 都翻译成这样了，明显这题需要计算几何">
 <meta name="keywords" content="计算几何">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF54E-Vacuum-Cleaner">
 <meta property="og:url" content="http://yoursite.com/2019/09/15/C-F54E-acuum-Сleaner/index.html">
 <meta property="og:site_name" content="вырождение эпохи">
-<meta property="og:description" content="简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转 都翻译成这样了，明显这题需要计算几何  如图，死角的面积是$S_{\Delta ABC}-S_1$(注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，为了让死角面积最小，就是让$\Delta ABC$AB边上的高最小。因">
+<meta property="og:description" content="简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转 都翻译成这样了，明显这题需要计算几何">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://i.loli.net/2018/11/25/5bfa412598c34.png">
-<meta property="og:updated_time" content="2019-09-22T06:09:56.806Z">
+<meta property="og:updated_time" content="2019-09-22T07:13:08.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF54E-Vacuum-Cleaner">
-<meta name="twitter:description" content="简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转 都翻译成这样了，明显这题需要计算几何  如图，死角的面积是$S_{\Delta ABC}-S_1$(注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，为了让死角面积最小，就是让$\Delta ABC$AB边上的高最小。因">
+<meta name="twitter:description" content="简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转 都翻译成这样了，明显这题需要计算几何">
 <meta name="twitter:image" content="https://i.loli.net/2018/11/25/5bfa412598c34.png">
   
     <link rel="alternate" href="/atom.xml" title="вырождение эпохи" type="application/atom+xml">
@@ -91,6 +91,7 @@
       
         <p>简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转</p>
 <p><del>都翻译成这样了，明显</del><strong>这题需要计算几何</strong></p>
+<a id="more"></a>
 <p><img src="https://i.loli.net/2018/11/25/5bfa412598c34.png" alt="tmp.png"></p>
 <p>如图，死角的面积是$S_{\Delta ABC}-S_1$(注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，<strong>为了让死角面积最小，就是让$\Delta ABC$AB边上的高最小</strong>。因为直角三角形的斜边的中线等于斜边的一半，所以点O在以AB为直径的圆上，所以<strong>当三角形的边与多边形的边重合时高最小</strong>。</p>
 <p>于是我们只需要枚举该多边形的n条边，讨论其靠左墙或靠下墙，然后通过作垂直于该边的线求出贴在另一墙上离点O最近的点，然后计算出此时面积，取最小值。维护内部多边形的面积时可将其分割成若干三角形，然后用叉积维护。</p>
@@ -101,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/15/C-F54E-acuum-Сleaner/" data-id="ck0ul1fnk0000pkuul37ctc58" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/15/C-F54E-acuum-Сleaner/" data-id="ck0umvufb0000p0uu8ult8w9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
@@ -143,7 +144,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
     </div>
   </div>
 
@@ -153,7 +154,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a>
+      <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/点分治/" style="font-size: 15px;">点分治</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/计算几何/" style="font-size: 20px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/边分治/" style="font-size: 10px;">边分治</a>
     </div>
   </div>
 
@@ -175,15 +176,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/22/CF512E-Fox-And-Ploygon/">CF512E-Fox-And-Ploygon</a>
+            <a href="/2019/09/22/SPOJ2666-QTREE4/">SPOJ2666-QTREE4</a>
           </li>
         
           <li>
-            <a href="/2019/09/15/C-F54E-acuum-Сleaner/">CF54E-Vacuum-Cleaner</a>
+            <a href="/2019/09/22/SPOJ1825-FTOUR2/">SPOJ1825-FTOUR2</a>
           </li>
         
           <li>
-            <a href="/2019/09/15/hello-world/">Hello World</a>
+            <a href="/2019/09/22/POJ1741-Tree/">POJ1741-Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/">COCI2014/2015#3-KAMIONI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/">GXOI/GZOI2019-lvxingzhe</a>
           </li>
         
       </ul>

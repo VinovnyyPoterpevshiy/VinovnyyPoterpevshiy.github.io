@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CF512E-Fox-And-Ploygon" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SPOJ2666-QTREE4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/22/CF512E-Fox-And-Ploygon/" class="article-date">
-  <time datetime="2019-09-22T06:04:52.000Z" itemprop="datePublished">2019-09-22</time>
+    <a href="/2019/09/22/SPOJ2666-QTREE4/" class="article-date">
+  <time datetime="2019-09-22T07:00:51.000Z" itemprop="datePublished">2019-09-22</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/22/CF512E-Fox-And-Ploygon/">CF512E-Fox-And-Ploygon</a>
+      <a class="article-title" href="/2019/09/22/SPOJ2666-QTREE4/">SPOJ2666-QTREE4</a>
     </h1>
   
 
@@ -84,21 +84,288 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><del>本来以为是一道奇怪的dp题，，，然而发现它不是求最小值，而是求具体方案。。。</del></p>
-<p>有一种思路是这样的：</p>
-<p>将这个被分成许多三角形的多边形映射成一个有根树，其中每个三角形是一个非根、非叶子节点，每条对角线是一条边，根节点和叶子节点都在多边形外。通过旋转该树直到旋转成了目标状态。目标状态可为任何一种构型的树。实际上是<strong>先构造出初始状态下的数，然后以同样的根构造出目标状态下的树，然后旋转、计数</strong>。请允许我用官方题解中的图。</p>
-<p><img src="https://puu.sh/e4tiX/db64342636.png" alt></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; e[<span class="number">1001</span>];</span><br><span class="line"><span class="keyword">bool</span> have[<span class="number">1001</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> leftMark, rightMark;</span><br><span class="line">	node* sonLeft, *sonRight;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updateMark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		leftMark = sonLeft-&gt;leftMark;</span><br><span class="line">		rightMark = sonRight-&gt;rightMark;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;*start, *want;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">step</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> fromA, fromB;</span><br><span class="line">	<span class="keyword">int</span> toA, toB;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">node* <span class="title">addNode</span><span class="params">(<span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> from)</span> </span>&#123;</span><br><span class="line">	node *t = <span class="keyword">new</span> node();</span><br><span class="line">	t-&gt;leftMark = L;</span><br><span class="line">	t-&gt;rightMark = R;</span><br><span class="line">	<span class="keyword">if</span>(L == R+<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e[L].size(); i++)</span><br><span class="line">		<span class="keyword">if</span>(e[L][i] != from)</span><br><span class="line">			have[e[L][i]] = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">int</span> M = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; e[R].size(); j++)</span><br><span class="line">		<span class="keyword">if</span>(e[R][j] != from)</span><br><span class="line">			<span class="keyword">if</span>(have[e[R][j]])</span><br><span class="line">				M = e[R][j];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e[L].size(); i++)</span><br><span class="line">		have[e[L][i]] = <span class="literal">false</span>;</span><br><span class="line">	t-&gt;sonLeft = addNode(L, M, R);</span><br><span class="line">	t-&gt;sonRight = addNode(M, R, L);</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">node* <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		e[i].clear();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n<span class="number">-3</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> a, b;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		e[a].push_back(b);</span><br><span class="line">		e[b].push_back(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> j = i+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(i == n) j = <span class="number">1</span>;</span><br><span class="line">		e[i].push_back(j);</span><br><span class="line">		e[j].push_back(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> addNode(n, <span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(node *p, <span class="built_in">string</span> append)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; append &lt;&lt; p-&gt;leftMark &lt;&lt; <span class="string">" "</span> &lt;&lt; p-&gt;rightMark &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">if</span>(p-&gt;sonLeft != <span class="literal">NULL</span>)</span><br><span class="line">		print(p-&gt;sonLeft, append + <span class="string">"\t"</span>);</span><br><span class="line">	<span class="keyword">if</span>(p-&gt;sonRight != <span class="literal">NULL</span>)</span><br><span class="line">		print(p-&gt;sonRight, append + <span class="string">"\t"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span> &lt;step&gt; record;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotateR</span><span class="params">(node *r)</span> </span>&#123;</span><br><span class="line">	step t;</span><br><span class="line">	node *s = r-&gt;sonLeft;</span><br><span class="line">	node *a = s-&gt;sonLeft;</span><br><span class="line">	node *b = s-&gt;sonRight;</span><br><span class="line">	node *c = r-&gt;sonRight;</span><br><span class="line">	t.fromA = s-&gt;leftMark;</span><br><span class="line">	t.fromB = s-&gt;rightMark;</span><br><span class="line">	r-&gt;sonLeft = a;</span><br><span class="line">	r-&gt;sonRight = s;</span><br><span class="line">	s-&gt;sonLeft = b;</span><br><span class="line">	s-&gt;sonRight = c;</span><br><span class="line">	s-&gt;updateMark();</span><br><span class="line">	r-&gt;updateMark();</span><br><span class="line">	t.toA = s-&gt;leftMark;</span><br><span class="line">	t.toB = s-&gt;rightMark;</span><br><span class="line">	record.push_back(t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotateL</span><span class="params">(node *r)</span> </span>&#123;</span><br><span class="line">	step t;</span><br><span class="line">	node *s = r-&gt;sonRight;</span><br><span class="line">	node *a = r-&gt;sonLeft;</span><br><span class="line">	node *b = s-&gt;sonLeft;</span><br><span class="line">	node *c = s-&gt;sonRight;</span><br><span class="line">	t.fromA = s-&gt;leftMark;</span><br><span class="line">	t.fromB = s-&gt;rightMark;</span><br><span class="line">	r-&gt;sonLeft = s;</span><br><span class="line">	r-&gt;sonRight = c;</span><br><span class="line">	s-&gt;sonLeft = a;</span><br><span class="line">	s-&gt;sonRight = b;</span><br><span class="line">	s-&gt;updateMark();</span><br><span class="line">	r-&gt;updateMark();</span><br><span class="line">	t.toA = s-&gt;leftMark;</span><br><span class="line">	t.toB = s-&gt;rightMark;</span><br><span class="line">	record.push_back(t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotateRT</span><span class="params">(node *p, <span class="keyword">int</span> middle)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> myMiddle = p-&gt;sonLeft-&gt;rightMark;</span><br><span class="line">	<span class="keyword">if</span>(myMiddle == middle)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(myMiddle &lt; middle) &#123;</span><br><span class="line">		rotateRT(p-&gt;sonLeft, middle);</span><br><span class="line">		rotateR(p);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(myMiddle &gt; middle) &#123;</span><br><span class="line">		rotateRT(p-&gt;sonRight, middle);</span><br><span class="line">		rotateL(p);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">norm</span><span class="params">(node *p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p-&gt;leftMark - p-&gt;rightMark &lt;= <span class="number">2</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> middle = (p-&gt;leftMark + p-&gt;rightMark) / <span class="number">2</span>;</span><br><span class="line">	rotateRT(p, middle);</span><br><span class="line">	norm(p-&gt;sonLeft);</span><br><span class="line">	norm(p-&gt;sonRight);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios :: sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">memset</span>(have, <span class="number">0</span>, <span class="keyword">sizeof</span>(have));</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	start = input();</span><br><span class="line">	norm(start);</span><br><span class="line">	<span class="built_in">vector</span> &lt;step&gt; record1 = record;</span><br><span class="line">	record.clear();</span><br><span class="line">	want = input();</span><br><span class="line">	norm(want);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; record.size() + record1.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; record1.size(); i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; record1[i].fromA &lt;&lt; <span class="string">" "</span> &lt;&lt; record1[i].fromB &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = record.size()<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; record[i].toA &lt;&lt; <span class="string">" "</span> &lt;&lt; record[i].toB &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><del>好烦啊QAQ</del></p>
-<p>然而还有一种简单而暴力的思路：</p>
-<p>我们只需要进行一系列的变换使初始状态中所有的对角线变成以1号节点为端点的对角线并正序存储变换的步骤，然后在进行一系列变换使目标状态中所有的对角线也变成以1号节点为端点的对角线并<strong>倒序存储</strong>变换的步骤（毕竟这实际上是倒推），记一下总数并输出步骤即可</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;pii&gt; vii;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> maxn = <span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">bool</span> e[maxn][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function">pii <span class="title">flip</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">bool</span> inv)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">-1</span>, y;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">if</span> (e[a][i] &amp;&amp; e[b][i])</span><br><span class="line">      <span class="keyword">if</span> (x == <span class="number">-1</span>)</span><br><span class="line">        x = i;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        y = i;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  e[a][b] = e[b][a] = <span class="literal">false</span>;</span><br><span class="line">  e[x][y] = e[y][x] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">return</span> inv ? make_pair(x, y) : make_pair(a, b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vii <span class="title">solve</span><span class="params">(<span class="keyword">bool</span> inv)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(e, <span class="number">0</span>, <span class="keyword">sizeof</span>(e));</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    e[i][(i + <span class="number">1</span>) % n] = e[(i + <span class="number">1</span>) % n][i] = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, a, b; i &lt; n - <span class="number">3</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    a--;</span><br><span class="line">    b--;</span><br><span class="line">    e[a][b] = e[b][a] = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  vii res;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n;) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e[<span class="number">0</span>][i]) &#123;</span><br><span class="line">      i++;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">for</span> (j = i + <span class="number">1</span>; e[<span class="number">0</span>][j] == <span class="number">0</span>; j++)</span><br><span class="line">      ;</span><br><span class="line">    res.push_back(flip(i - <span class="number">1</span>, j, inv));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios_base::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  vii a = solve(<span class="literal">false</span>), b = solve(<span class="literal">true</span>);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; a.size() + b.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)a.size(); i++)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; a[i].first + <span class="number">1</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; a[i].second + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = b.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; b[i].first + <span class="number">1</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; b[i].second + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><del>明显简单了许多</del></p>
-
+        <p>这题是可以点分治或LCT作的。。但这里讲边分治的做法。。</p>
+<p>和点分治类似，边分治利用一条树上路径要吗经过一条边，要么不经过。而不经过的路径必然会在一次分治中变为经过的。</p>
+<p>我们找到一条中心边，边左边和边右边分别建一个大根堆。左边的堆中存储边的左子树中白点的深度，右边的堆储存右边的。</p>
+<p>当发生颜色反转时，若为黑点转白点，则去掉标记，并将点压入相应的堆中。若为白点转为黑点，则将其打上标记。</p>
+<p>统计时，先不断弹左右堆顶，直到堆顶没有标记或堆空。然后用左堆顶值、右堆顶值和(左堆顶值+右堆顶值+中心边长度)三者的最大值更新答案。</p>
+<p>为方便边分治，我们使每个点的度数不大于$3$，即转为一棵二叉树。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/SPOJ2666-QTREE4/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/22/CF512E-Fox-And-Ploygon/" data-id="ck0ul1fnr0001pkuujwhh3jr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/22/SPOJ2666-QTREE4/" data-id="ck0umvugp000pp0uuk949sn9v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-SPOJ1825-FTOUR2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/SPOJ1825-FTOUR2/" class="article-date">
+  <time datetime="2019-09-22T06:59:13.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/SPOJ1825-FTOUR2/">SPOJ1825-FTOUR2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道，树上两个点的LCA要么是当前根节点，要么不是。。所以两个点间的最短路径要么经过当前根节点，要么在一棵当前根节点的子树中。。</p>
+<p>考虑点分治，于是在原来同一子树中的两个点必然在一次分治中变为路径经过当前根节点的两个点。</p>
+<p><del>点分治标准开头(雾</del></p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/SPOJ1825-FTOUR2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/SPOJ1825-FTOUR2/" data-id="ck0umvugr000rp0uux0l4fh17" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点分治/">点分治</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-POJ1741-Tree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/POJ1741-Tree/" class="article-date">
+  <time datetime="2019-09-22T06:56:11.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/POJ1741-Tree/">POJ1741-Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道，树上两个点的LCA要么是当前根节点，要么不是。。所以两个点间的最短路径要么经过当前根节点，要么在一棵当前根节点的子树中。。</p>
+<p>考虑点分治，于是在原来同一子树中的两个点必然在一次分治中变为路径经过当前根节点的两个点。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/POJ1741-Tree/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/POJ1741-Tree/" data-id="ck0umvugn000np0uuoer857sf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点分治/">点分治</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-COCI2014-2015-3-KAMIONI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/" class="article-date">
+  <time datetime="2019-09-22T06:51:55.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/COCI2014-2015-3-KAMIONI/">COCI2014/2015#3-KAMIONI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>难得的没人做的水紫题。。</p>
+<p>我的做法：</p>
+<p>首先我们应该将每一辆车的转折点按照发生时间来排序。将所有不重复的查询都保存在拐点少的那个的名下。然后枚举每一个拐点就可以了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/COCI2014-2015-3-KAMIONI/" data-id="ck0umvuge000hp0uuw9wv7u40" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-GXOI-GZOI2019-lvxingzhe" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/" class="article-date">
+  <time datetime="2019-09-22T06:48:25.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/">GXOI/GZOI2019-lvxingzhe</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="暴力："><a href="#暴力：" class="headerlink" title="暴力："></a>暴力：</h3><p>对于每个特殊点为起始点计算Dijkstra或spfa。。</p>
+<p>然而这样有很多重复操作，很多路径会被重复走。</p>
+<h3 id="改善："><a href="#改善：" class="headerlink" title="改善："></a>改善：</h3><p>考虑把特殊点分组，分组只计算两组间的最短路，组内不计算。显然，分为两组最优（如果分为多组的话其实和没有分组一样会走重复路径）。最方便的分组方法就是把特殊点编号转为二进制，第$i$次分组，将第$i$位为$1$的分一组，其余另一组。共需分$\log n$次组。</p>
+<p>为获得每一次分组的最短路，我们利用类似于网络流建图的方法。将$s$连向一组的所有点无向边，边权为$0$，将另一组的所有点连向$t$无向边，边权为$0$，$s$到$t$的最短路和$t$到$s$的最短路的最小值就是这一次分组的最短路结果。最终结果为所有分组最短路的最小值。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/GXOI-GZOI2019-lvxingzhe/" data-id="ck0umvugl000mp0uuo46r53p9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-GXOI-GZOI2019-jiuci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/GXOI-GZOI2019-jiuci/" class="article-date">
+  <time datetime="2019-09-22T06:45:49.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/GXOI-GZOI2019-jiuci/">GXOI/GZOI2019-旧词</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="相关链接（雾：-LNOI2014-LCA"><a href="#相关链接（雾：-LNOI2014-LCA" class="headerlink" title="相关链接（雾：[LNOI2014]LCA"></a>相关链接（雾：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3626" target="_blank" rel="noopener">[LNOI2014]LCA</a></h3><p>实际上这题就是加了一个幂。。<del>原题爆破比赛</del></p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/GXOI-GZOI2019-jiuci/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/GXOI-GZOI2019-jiuci/" data-id="ck0umvugi000jp0uu0nh8ensj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树链剖分/">树链剖分</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CF55E-Very-Simple-Problem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/CF55E-Very-Simple-Problem/" class="article-date">
+  <time datetime="2019-09-22T06:39:35.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/CF55E-Very-Simple-Problem/">CF55E-Very-Simple-Problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>讲道理的话，题目中有<strong>simple</strong>一词的题目都不会简单。。</p>
+<p>这道题如果我们直接计算包含的个数，本蒟蒻只能想到$O(n^3)$的解法，然后就咕咕了。。于是我们可以从反面考虑——数不包含该点的三角形。然后我们发现，如果一个三角形不包含该点，则这个三角形总有一条边把该点和三角形另一个顶点分割开了，于是我们只需要枚举线段那个分割线段，然后求三角形另一个顶点有多少种选法即可，最后用总数减一下。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/CF55E-Very-Simple-Problem/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/CF55E-Very-Simple-Problem/" data-id="ck0umvufw0004p0uuu0ebhcbb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
@@ -110,10 +377,10 @@
 
 
   
-    <article id="post-C-F54E-acuum-Сleaner" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CF75E-Ship-s-Shortest-Path" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/15/C-F54E-acuum-Сleaner/" class="article-date">
-  <time datetime="2019-09-15T07:02:12.000Z" itemprop="datePublished">2019-09-15</time>
+    <a href="/2019/09/22/CF75E-Ship-s-Shortest-Path/" class="article-date">
+  <time datetime="2019-09-22T06:35:15.000Z" itemprop="datePublished">2019-09-22</time>
 </a>
     
   </div>
@@ -124,7 +391,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/C-F54E-acuum-Сleaner/">CF54E-Vacuum-Cleaner</a>
+      <a class="article-title" href="/2019/09/22/CF75E-Ship-s-Shortest-Path/">CF75E-Ship&#39;s-Shortest-Path</a>
     </h1>
   
 
@@ -132,19 +399,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简洁的题意翻译：对于一个凸包形状的吸尘器，问你这个吸尘器在清理矩形的角落时，遗留下的最小面积，可以旋转</p>
-<p><del>都翻译成这样了，明显</del><strong>这题需要计算几何</strong></p>
-<p><img src="https://i.loli.net/2018/11/25/5bfa412598c34.png" alt="tmp.png"></p>
-<p>如图，死角的面积是$S_{\Delta ABC}-S_1$(注：1可为任何边形)，明显，对于每个固定的A和B，$S_1$的面积是固定的且$\Delta ABC$的高AB也是固定的。于是，<strong>为了让死角面积最小，就是让$\Delta ABC$AB边上的高最小</strong>。因为直角三角形的斜边的中线等于斜边的一半，所以点O在以AB为直径的圆上，所以<strong>当三角形的边与多边形的边重合时高最小</strong>。</p>
-<p>于是我们只需要枚举该多边形的n条边，讨论其靠左墙或靠下墙，然后通过作垂直于该边的线求出贴在另一墙上离点O最近的点，然后计算出此时面积，取最小值。维护内部多边形的面积时可将其分割成若干三角形，然后用叉积维护。</p>
-<p>最后，注意精度控制</p>
-<p>代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">long long sqr(long long x) __attribute__((always_inline));</span><br><span class="line"></span><br><span class="line">long long sqr(long long x) &#123; return x * x; &#125;</span><br><span class="line"></span><br><span class="line">struct Point &#123;</span><br><span class="line">  Point(int x = 0, int y = 0) : x(x), y(y) &#123;&#125;</span><br><span class="line">  inline Point &amp;operator-=(const Point &amp;o) &#123;</span><br><span class="line">    x -= o.x;</span><br><span class="line">    y -= o.y;</span><br><span class="line">    return *this;</span><br><span class="line">  &#125;</span><br><span class="line">  double dis() const __attribute__((always_inline));</span><br><span class="line">  int x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">double Point::dis() const &#123; return sqrt(sqr(x) + sqr(y)); &#125;</span><br><span class="line"></span><br><span class="line">inline Point operator-(Point a, const Point &amp;b) &#123; return a -= b; &#125;</span><br><span class="line"></span><br><span class="line">long long det(const Point &amp;a, const Point &amp;b) __attribute__((always_inline));</span><br><span class="line">long long dot(const Point &amp;a, const Point &amp;b) __attribute__((always_inline));</span><br><span class="line">long long get_sum(int i, int j) __attribute__((always_inline));</span><br><span class="line">int nxt(int i) __attribute__((always_inline));</span><br><span class="line">double solve() __attribute__((always_inline));</span><br><span class="line"></span><br><span class="line">long long det(const Point &amp;a, const Point &amp;b) &#123;</span><br><span class="line">  return (long long)a.x * b.y - (long long)a.y * b.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">long long dot(const Point &amp;a, const Point &amp;b) &#123;</span><br><span class="line">  return (long long)a.x * b.x + (long long)a.y * b.y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const int N = 40000;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">Point p[N];</span><br><span class="line">long long sum[N + 1];</span><br><span class="line"></span><br><span class="line">long long get_sum(int i, int j) &#123;</span><br><span class="line">  long long s = sum[j] - sum[i];</span><br><span class="line">  return i &lt;= j ? s : sum[n] + s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int nxt(int i) &#123; return (i + 1) % n; &#125;</span><br><span class="line"></span><br><span class="line">double solve() &#123;</span><br><span class="line">  sum[0] = 0;</span><br><span class="line">  for (int i = 0; i &lt; n; ++i)</span><br><span class="line">    sum[i + 1] = sum[i] + det(p[i], p[(i + 1) % n]);</span><br><span class="line">  double result = INFINITY;</span><br><span class="line">  for (int i = 0, j = 0; i &lt; n; ++i) &#123;</span><br><span class="line">    while (dot(p[nxt(i)] - p[i], p[nxt(j)] - p[j]) &gt; 0)</span><br><span class="line">      j = nxt(j);</span><br><span class="line">    Point a = p[nxt(i)] - p[i];</span><br><span class="line">    Point b = p[j] - p[i];</span><br><span class="line">    double n = a.dis();</span><br><span class="line">    result = min(result, det(a, b) / n * dot(a, b) / n -</span><br><span class="line">                             (get_sum(i, j) + det(p[j], p[i])));</span><br><span class="line">    if (i == j)</span><br><span class="line">      return 0.;</span><br><span class="line">  &#125;</span><br><span class="line">  return .5 * result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">  for (int i = 0; i &lt; n; ++i)</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;p[i].x, &amp;p[i].y);</span><br><span class="line">  solve();</span><br><span class="line">  if (sum[n] &lt; 0)</span><br><span class="line">    reverse(p, p + n);</span><br><span class="line">  double result = solve();</span><br><span class="line">  for (int i = 0; i &lt; n; ++i)</span><br><span class="line">    p[i].x *= -1;</span><br><span class="line">  reverse(p, p + n);</span><br><span class="line">  result = min(result, solve());</span><br><span class="line">  printf(&quot;%.10f\n&quot;, result);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <p>计算几何方法存点、算边来建图，然后跑一边最短路就行了。这题水到Floyd都能过。。。</p>
+<p>我们先连接起始点(s)和终点(t)。如果st不与多边形相交或与多边形的一条边重合，则直接输出st的长度。否则，建一个由s、t、st与多边形的两个交点、多边形的端点组成的图。若这张图中有两点为端点的线段不与多边形相交，则这两个点之间建一条边权为从一点走到另一点费用的边。最后求s、t两点的最短路即可。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/CF75E-Ship-s-Shortest-Path/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/15/C-F54E-acuum-Сleaner/" data-id="ck0ul1fnk0000pkuul37ctc58" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/22/CF75E-Ship-s-Shortest-Path/" data-id="ck0umvug30008p0uuxd64tcia" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最短路/">最短路</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CF46G-Emperor-s-Problem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/CF46G-Emperor-s-Problem/" class="article-date">
+  <time datetime="2019-09-22T06:33:52.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/CF46G-Emperor-s-Problem/">CF46G-Emperor&#39;s-Problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CodeForces的标签中说这题是计算几何题，，，而官方题解里说这是贪心题，，，然而我认为这就是一道暴力题。。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/CF46G-Emperor-s-Problem/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/CF46G-Emperor-s-Problem/" data-id="ck0umvuft0003p0uudk9azord" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暴力/">暴力</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CF87E-Mogohu-Rea-Idol" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/CF87E-Mogohu-Rea-Idol/" class="article-date">
+  <time datetime="2019-09-22T06:30:27.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/CF87E-Mogohu-Rea-Idol/">CF87E-Mogohu-Rea-Idol</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题解是真的简单。。。就是对三个凸包求$Minkowski sum$，然后判断点是否在凸多边形内即可。。。</p>
+<p>这题竟然还保证一个多边形内三点不共线。。。于是判断一个点是否在一个多边形边上变得更简单。。。一开始竟然没有看到这个条件，在那里进行检查。。。</p>
+<p>最后，在代码前略微解释一下$Minkowski sum$,其实就是$A+B=\{a+b|a∈A,b∈B\}$</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/22/CF87E-Mogohu-Rea-Idol/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/CF87E-Mogohu-Rea-Idol/" data-id="ck0umvugb000fp0uuj1eg106n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
@@ -156,52 +509,12 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/15/hello-world/" class="article-date">
-  <time datetime="2019-09-15T06:35:51.638Z" itemprop="datePublished">2019-09-15</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/15/hello-world/" data-id="ck0ul1fo40006pkuu1v69som9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -214,7 +527,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
     </div>
   </div>
 
@@ -224,7 +537,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a>
+      <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/点分治/" style="font-size: 15px;">点分治</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/计算几何/" style="font-size: 20px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/边分治/" style="font-size: 10px;">边分治</a>
     </div>
   </div>
 
@@ -246,15 +559,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/22/CF512E-Fox-And-Ploygon/">CF512E-Fox-And-Ploygon</a>
+            <a href="/2019/09/22/SPOJ2666-QTREE4/">SPOJ2666-QTREE4</a>
           </li>
         
           <li>
-            <a href="/2019/09/15/C-F54E-acuum-Сleaner/">CF54E-Vacuum-Cleaner</a>
+            <a href="/2019/09/22/SPOJ1825-FTOUR2/">SPOJ1825-FTOUR2</a>
           </li>
         
           <li>
-            <a href="/2019/09/15/hello-world/">Hello World</a>
+            <a href="/2019/09/22/POJ1741-Tree/">POJ1741-Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/">COCI2014/2015#3-KAMIONI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/">GXOI/GZOI2019-lvxingzhe</a>
           </li>
         
       </ul>

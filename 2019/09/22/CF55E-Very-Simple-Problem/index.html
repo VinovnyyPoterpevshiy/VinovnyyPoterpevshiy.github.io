@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+
+  
+  <title>CF55E-Very-Simple-Problem | вырождение эпохи</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="讲道理的话，题目中有simple一词的题目都不会简单。。 这道题如果我们直接计算包含的个数，本蒟蒻只能想到$O(n^3)$的解法，然后就咕咕了。。于是我们可以从反面考虑——数不包含该点的三角形。然后我们发现，如果一个三角形不包含该点，则这个三角形总有一条边把该点和三角形另一个顶点分割开了，于是我们只需要枚举线段那个分割线段，然后求三角形另一个顶点有多少种选法即可，最后用总数减一下。">
+<meta name="keywords" content="计算几何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF55E-Very-Simple-Problem">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/CF55E-Very-Simple-Problem/index.html">
+<meta property="og:site_name" content="вырождение эпохи">
+<meta property="og:description" content="讲道理的话，题目中有simple一词的题目都不会简单。。 这道题如果我们直接计算包含的个数，本蒟蒻只能想到$O(n^3)$的解法，然后就咕咕了。。于是我们可以从反面考虑——数不包含该点的三角形。然后我们发现，如果一个三角形不包含该点，则这个三角形总有一条边把该点和三角形另一个顶点分割开了，于是我们只需要枚举线段那个分割线段，然后求三角形另一个顶点有多少种选法即可，最后用总数减一下。">
+<meta property="og:locale" content="zn">
+<meta property="og:updated_time" content="2019-09-22T07:12:15.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CF55E-Very-Simple-Problem">
+<meta name="twitter:description" content="讲道理的话，题目中有simple一词的题目都不会简单。。 这道题如果我们直接计算包含的个数，本蒟蒻只能想到$O(n^3)$的解法，然后就咕咕了。。于是我们可以从反面考虑——数不包含该点的三角形。然后我们发现，如果一个三角形不包含该点，则这个三角形总有一条边把该点和三角形另一个顶点分割开了，于是我们只需要枚举线段那个分割线段，然后求三角形另一个顶点有多少种选法即可，最后用总数减一下。">
+  
+    <link rel="alternate" href="/atom.xml" title="вырождение эпохи" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">вырождение эпохи</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CF55E-Very-Simple-Problem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/CF55E-Very-Simple-Problem/" class="article-date">
+  <time datetime="2019-09-22T06:39:35.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CF55E-Very-Simple-Problem
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>讲道理的话，题目中有<strong>simple</strong>一词的题目都不会简单。。</p>
+<p>这道题如果我们直接计算包含的个数，本蒟蒻只能想到$O(n^3)$的解法，然后就咕咕了。。于是我们可以从反面考虑——数不包含该点的三角形。然后我们发现，如果一个三角形不包含该点，则这个三角形总有一条边把该点和三角形另一个顶点分割开了，于是我们只需要枚举线段那个分割线段，然后求三角形另一个顶点有多少种选法即可，最后用总数减一下。</p>
+<a id="more"></a>
+<p>上代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_N = <span class="number">100005</span>;</span><br><span class="line"></span><br><span class="line">pair&lt;<span class="keyword">long</span> <span class="keyword">long</span>, <span class="keyword">long</span> <span class="keyword">long</span>&gt; a[<span class="number">2</span> * MAX_N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="title">dis</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x1, <span class="keyword">long</span> <span class="keyword">long</span> y1, <span class="keyword">long</span> <span class="keyword">long</span> x2, <span class="keyword">long</span> <span class="keyword">long</span> y2,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="keyword">long</span> <span class="keyword">long</span> x3, <span class="keyword">long</span> <span class="keyword">long</span> y3)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (x2 - x1) * (y3 - y2) - (y2 - y1) * (x3 - x2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">in_poly</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">long</span> <span class="keyword">long</span> area1 = <span class="number">0</span>, area2 = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">    area1 += a[i].first * a[i + <span class="number">1</span>].second - a[i].second * a[i + <span class="number">1</span>].first;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">    area2 += <span class="built_in">fabs</span>(</span><br><span class="line">        dis(x, y, a[i].first, a[i].second, a[i + <span class="number">1</span>].first, a[i + <span class="number">1</span>].second));</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">fabs</span>(area) == area2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">C3</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x &lt; <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1L</span>L * x * (x - <span class="number">1</span>) * (x - <span class="number">2</span>) / <span class="number">6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">C2</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (x &lt; <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1L</span>L * x * (x - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!in_poly(x, y, n))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> j = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (; dis(a[i].first, a[i].second, a[j + <span class="number">1</span>].first, a[j + <span class="number">1</span>].second, x, y) &lt;</span><br><span class="line">           <span class="number">0</span>;</span><br><span class="line">         ++j)</span><br><span class="line">      ;</span><br><span class="line">    sum += C2(j - i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> C3(n) - sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n, t;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a[i].first &gt;&gt; a[i].second;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i)</span><br><span class="line">    a[i + n] = a[i];</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i) &#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> x, y;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; solve(x, y, n) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/CF55E-Very-Simple-Problem/" data-id="ck0umvufw0004p0uuu0ebhcbb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/22/GXOI-GZOI2019-jiuci/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          GXOI/GZOI2019-旧词
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/22/CF75E-Ship-s-Shortest-Path/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CF75E-Ship&#39;s-Shortest-Path</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/点分治/" style="font-size: 15px;">点分治</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/计算几何/" style="font-size: 20px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/边分治/" style="font-size: 10px;">边分治</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/22/SPOJ2666-QTREE4/">SPOJ2666-QTREE4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/SPOJ1825-FTOUR2/">SPOJ1825-FTOUR2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/POJ1741-Tree/">POJ1741-Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/">COCI2014/2015#3-KAMIONI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/">GXOI/GZOI2019-lvxingzhe</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 VinovnyyPoterpevshiy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

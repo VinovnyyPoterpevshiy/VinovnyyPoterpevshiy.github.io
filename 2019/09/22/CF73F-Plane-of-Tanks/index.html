@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+
+  
+  <title>CF73F-Plane-of-Tanks | вырождение эпохи</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一眼二分题，check打懵逼   ——某奆佬  好吧，，，在这题中，如果$v_1 \le v_2$且$v_1$为可行解，则$v_2$必然为可行解，所以是有单调性的，所以可以二分，然后二分的check就不会打了。。">
+<meta name="keywords" content="计算几何,二分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF73F-Plane-of-Tanks">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/CF73F-Plane-of-Tanks/index.html">
+<meta property="og:site_name" content="вырождение эпохи">
+<meta property="og:description" content="一眼二分题，check打懵逼   ——某奆佬  好吧，，，在这题中，如果$v_1 \le v_2$且$v_1$为可行解，则$v_2$必然为可行解，所以是有单调性的，所以可以二分，然后二分的check就不会打了。。">
+<meta property="og:locale" content="zn">
+<meta property="og:image" content="https://i.loli.net/2018/12/06/5c091f3554115.png">
+<meta property="og:updated_time" content="2019-09-22T07:12:48.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CF73F-Plane-of-Tanks">
+<meta name="twitter:description" content="一眼二分题，check打懵逼   ——某奆佬  好吧，，，在这题中，如果$v_1 \le v_2$且$v_1$为可行解，则$v_2$必然为可行解，所以是有单调性的，所以可以二分，然后二分的check就不会打了。。">
+<meta name="twitter:image" content="https://i.loli.net/2018/12/06/5c091f3554115.png">
+  
+    <link rel="alternate" href="/atom.xml" title="вырождение эпохи" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">вырождение эпохи</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CF73F-Plane-of-Tanks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/CF73F-Plane-of-Tanks/" class="article-date">
+  <time datetime="2019-09-22T06:12:16.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CF73F-Plane-of-Tanks
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一眼二分题，check打懵逼   ——某奆佬</p>
+</blockquote>
+<p>好吧，，，在这题中，如果$v_1 \le v_2$且$v_1$为可行解，则$v_2$必然为可行解，所以是有单调性的，所以可以二分，然后二分的check就不会打了。。</p>
+<a id="more"></a>
+<hr>
+<h3 id="重点：关于check"><a href="#重点：关于check" class="headerlink" title="重点：关于check"></a><strong>重点：关于check</strong></h3><ol>
+<li><p>分析</p>
+<p>分析一下，发现我们其实可以假设所有坦克都转向B点（因为如果一个坦克能在Pedalny行驶过程中（包括AB）指向Pedalny，必然能在Pedalny到达B点之前指向B点，于是只要等Pedalny来了之后一起轰击就行了），于是我们只需要计算出Pedalny到达B点之前，有多少坦克能指向B点就行了。为了让更多的坦克指向B点<del>（误</del>，我们需要计算出对于每个坦克，是顺时针旋转指向B点，还是逆时针旋转指向B点快。</p>
+</li>
+<li><p>计算旋转时间</p>
+<p>然后我们发现每个坦克的旋转速度是确定的，于是我们只需要计算旋转角就行了，然后就变成了用勾股定理求出边长，然后使用求直角三角形的角的正切值之后$tan^{-1}$算出角度，然后就解决问题了。</p>
+<p>如图，CD//x轴，坦克C初始面向射线CE方向，BF$\perp$CD，题目给出了$\angle DCF$，我们只需要计算$\angle BCF$即可，具体计算为:$\angle BCF=tan^{-1}(\frac {BF} {CF})$,最终旋转角为$\angle DCF + \angle BCF$</p>
+<p><img src="https://i.loli.net/2018/12/06/5c091f3554115.png" alt="geogebra-export.png"></p>
+</li>
+</ol>
+<p>似乎比官方题解简单多了。。个人写实数二分较为奇怪，请勉强接受一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#define EPS 1e-6</span><br><span class="line">#define PI acos(-1)</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int n, m, k;</span><br><span class="line"></span><br><span class="line">struct Point &#123;</span><br><span class="line">  double x, y;</span><br><span class="line">  Point() &#123;&#125;</span><br><span class="line">  Point(double x, double y) : x(x), y(y) &#123;&#125;</span><br><span class="line">  double abs() const &#123; return hypot(x, y); &#125;</span><br><span class="line">  double arg() const &#123; return atan2(y, x); &#125;</span><br><span class="line">  Point operator*(double o) const &#123; return Point(x * o, y * o); &#125;</span><br><span class="line">  Point operator+(const Point &amp;o) const &#123; return Point(x + o.x, y + o.y); &#125;</span><br><span class="line">  Point operator-(const Point &amp;o) const &#123; return Point(x - o.x, y - o.y); &#125;</span><br><span class="line">  bool operator&lt;(const Point &amp;o) const &#123;</span><br><span class="line">    return x &lt; o.x - EPS || (x &lt; o.x + EPS &amp;&amp; y &lt; o.y - EPS);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Point A, B;</span><br><span class="line">map&lt;double, int&gt; js;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  scanf(&quot;%lf%lf%lf%lf&quot;, &amp;A.x, &amp;A.y, &amp;B.x, &amp;B.y);</span><br><span class="line">  scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">  double x, y, a, w;</span><br><span class="line">  for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    scanf(&quot;%lf%lf%lf%lf&quot;, &amp;x, &amp;y, &amp;a, &amp;w);</span><br><span class="line">    if (abs(w) &lt; EPS)</span><br><span class="line">      continue;</span><br><span class="line">    Point p = &#123;x, y&#125;;</span><br><span class="line">    double v = -2;</span><br><span class="line">    for (int j = 0; j &lt;= 100; j++) &#123;</span><br><span class="line">      Point tp = (B - A) * (j / 100.0) + A;</span><br><span class="line">      double arg = (tp - p).arg() - a;</span><br><span class="line">      if (arg &gt; 2 * PI)</span><br><span class="line">        arg -= 2 * PI;</span><br><span class="line">      while (arg &lt; 0)</span><br><span class="line">        arg += 2 * PI;</span><br><span class="line">      if (arg &gt; 2 * PI - arg)</span><br><span class="line">        arg = 2 * PI - arg;</span><br><span class="line">      double t = arg / w;</span><br><span class="line">      v = v &lt; -1 ? (tp - A).abs() / t : max(v, (tp - A).abs() / t);</span><br><span class="line">    &#125;</span><br><span class="line">    js[v]++;</span><br><span class="line">  &#125;</span><br><span class="line">  scanf(&quot;%d&quot;, &amp;k);</span><br><span class="line">  int sk = 0;</span><br><span class="line">  double t = -10;</span><br><span class="line">  for (map&lt;double, int&gt;::reverse_iterator it = js.rbegin(); it != js.rend();</span><br><span class="line">       it++) &#123;</span><br><span class="line">    if (sk + it-&gt;second &gt; k) &#123;</span><br><span class="line">      t = it-&gt;first;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    sk += it-&gt;second;</span><br><span class="line">  &#125;</span><br><span class="line">  printf(&quot;%.4lf\n&quot;, t &lt; -1 ? 0 : t);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/22/CF73F-Plane-of-Tanks/" data-id="ck0umvufy0005p0uutsv59jzd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分/">二分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/22/CF78E-Evacuation/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CF78E-Evacuation
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/22/CF512E-Fox-And-Ploygon/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CF512E-Fox-And-Ploygon</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力/">暴力</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/边分治/">边分治</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/暴力/" style="font-size: 10px;">暴力</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/点分治/" style="font-size: 15px;">点分治</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/计算几何/" style="font-size: 20px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 15px;">贪心</a> <a href="/tags/边分治/" style="font-size: 10px;">边分治</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/22/SPOJ2666-QTREE4/">SPOJ2666-QTREE4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/SPOJ1825-FTOUR2/">SPOJ1825-FTOUR2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/POJ1741-Tree/">POJ1741-Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/COCI2014-2015-3-KAMIONI/">COCI2014/2015#3-KAMIONI</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/22/GXOI-GZOI2019-lvxingzhe/">GXOI/GZOI2019-lvxingzhe</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 VinovnyyPoterpevshiy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
